@@ -1,4 +1,12 @@
 OauthDemo::Application.routes.draw do
+
+  # Omniauth
+  match '/auth/:service/callback' => 'services#create'
+
+  resources :services, :only => [:index, :create, :destroy]
+
+  root :to => 'services#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
